@@ -15,7 +15,11 @@
       </section>
       <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
       <script>
+
         $('document').ready(function() {
+          if(localStorage.getItem('todos') === null){
+          	localStorage.setItem('todos',[])
+          }
           window.todos = localStorage.getItem('todos').split(',');
           todos.forEach(function(item) {
             addTodo(item)
@@ -25,6 +29,7 @@
           var li = $('<li>').text(item).append('   <a href="#">x</a>');
           li.children().on('click', function() {
             li.css('text-decoration', 'line-through');
+            localStorage.setItem('todos', window.todos.toString()); 
           })
           $('ul').append(li);
           $('input').val('');
@@ -33,7 +38,10 @@
           window.todos.push(item);
           localStorage.setItem('todos', window.todos.toString()); 
          }
-         var completeTodo = function(item) {
+         var completedTodo = function(item) {
+         	// window.todos.push(item);
+          // 	localStorage.setItem('todos', window.todos.toString()); 
+
          }
         $('#add-todo').on('click', function() {
           var item = $('input').val();
