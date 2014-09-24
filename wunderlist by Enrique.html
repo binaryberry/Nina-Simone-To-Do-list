@@ -1,0 +1,52 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>I CAN HAZ TODO</h1>
+      </header>
+      <section>
+        <nav>
+          <input type='text' name='todo' placeholder='Add an item to your todo'>
+          <a href='#' id='add-todo'>add</a>
+        </nav>
+        <ul></ul>
+      </section>
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script>
+        $('document').ready(function() {
+          window.todos = localStorage.getItem('todos').split(',');
+          todos.forEach(function(item) {
+            addTodo(item)
+          });
+        });
+        var addTodo = function(item) {
+          var li = $('<li>').text(item).append('   <a href="#">x</a>');
+          li.children().on('click', function() {
+            li.css('text-decoration', 'line-through');
+          })
+          $('ul').append(li);
+          $('input').val('');
+        }
+        var saveTodo = function(item) {
+          window.todos.push(item);
+          localStorage.setItem('todos', window.todos.toString()); 
+         }
+         var completeTodo = function(item) {
+         }
+        $('#add-todo').on('click', function() {
+          var item = $('input').val();
+          addTodo(item);
+          saveTodo(item);
+        });
+        $('input').on('keyup', function() {
+          if(event.keyCode === 13) {
+            var item = $('input').val();
+            addTodo(item);
+            saveTodo(item);
+          }
+        });
+      </script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -15,14 +15,46 @@
 	</section>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script>
-		$('#add-todo').on('click', function(){
-			$('ul').append($('<li>').text($('input').val());
-			$('input').val();
+	$('document').ready(function(){
+		window.todos = eval(localStorage.getItem('todos'));
+		todos.forEach(function(item) {
+			addTodo(item)
+		});
+	});
+	var addToDo = function() {
+			var li = ($('<li>').text($('input').val()).append('<a href = "#'> x </a>);
+			console.log(li.children().first)
+			li.children().on('click', function(){
+				li.css('text-decoration', 'line-through')
+			})
+			$('ul').append(li)
+			$('input').val(' ');
+	}
+		
+	var saveTodo = function(item){
+		window.todos.push(item);
+		// localStorage.setItem('todos', ('['+window.todos+']"').toString())
+		localStorage.setItem('todos', ('['+window.todos+']"').toString())
+	}
 
+
+		$('#add-todo').on('click', function(){
+			var item = $('input')
+			addToDo(item);
+			saveToDo(item)
 		});
 
 		$('#input').on('keyup', function(){
-			console.log(event);
+			// console.log(event);
+			if(event.keyCode === 13) {
+			addToDo(item);
+			saveToDo(item)
+			}
+		});
+
+		$($('a')[1]).on('click', function(){ $(event.target.parentNode)
+			// console.log(event);
+
 
 		});
 
