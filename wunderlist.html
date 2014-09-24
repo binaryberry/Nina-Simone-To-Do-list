@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Wunderlist</title>
+</head>
+<body>
+	<header>	
+		<h1> I CAN HAS TO DO </h1>
+	</header>
+	<section>
+		<input type='text' name='todo' placeholder='Add an item to your todo'>
+		<a href='#' id='add-todo'>add</a>
+	<ul></ul>
+	</section>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+		$('#add-todo').on('click', function(){
+			$('ul').append($('<li>').text($('input').val());
+			$('input').val();
+
+		});
+
+		$('#input').on('keyup', function(){
+			console.log(event);
+
+		});
+
+
+	</script>
+</body>
+</html>
+
+<!-- go in the console, type $('input').val() then on a new line "hello there" -->
+<!-- then still in the console, type $('ul').append($('<li>').text('herro') -->
+<!-- then still in the console, type $('ul').append($('<li>').text($('input').val()) -->
