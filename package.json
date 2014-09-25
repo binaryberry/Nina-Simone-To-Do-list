@@ -1,0 +1,10 @@
+{
+  "name": "evening-chamber-8384",
+  "version": "1.0.0",
+  "description": "A Nina Simone-themed todo list",
+  "main": "index.html",
+  "directories": {
+    "lib": "lib",
+    "css":"css",
+    "audio":"audio"
+  },
