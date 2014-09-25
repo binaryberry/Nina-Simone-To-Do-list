@@ -1,0 +1,35 @@
+.completed {
+	text-decoration: line-through;
+}
+
+body {
+	background-color: #e9d66b;
+	text-align: center;
+	font:15px arial, sans-serif;
+}
+
+h6 {
+	font-style: italic
+}
+
+
+input { 
+	width: 51%;
+	height: 40px;
+	margin-left: 23%;
+	text-align: center;
+    display: block;
+    font:15px arial, sans-serif;
+}
+
+#add-todo{
+  font: bold 15px Arial;
+  text-decoration: none;
+  background-color: #008000;
+  color: black;
+  padding: 8px 6px 8px 6px;
+ /* border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px sol*/id #CCCCCC;
+}
