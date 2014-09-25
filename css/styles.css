@@ -8,7 +8,7 @@ body {
 	font:15px arial, sans-serif;
 }
 
-h6 {
+h4 {
 	font-style: italic
 }
 
@@ -23,7 +23,6 @@ input {
 }
 
 #add-todo{
-  margin-left: -2%;
   font: bold 22px Arial;
   text-decoration: none;
   background-color: #57BFD2;
@@ -34,7 +33,7 @@ input {
 dt{
   	width: 51%;
 	height: 40px;
-	margin-left: 23%;
+	margin-left: 22.5%;
   	font: bold 22px Arial;
   	text-decoration: none;
   	background-color: #008000;
