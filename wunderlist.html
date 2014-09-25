@@ -1,68 +1,75 @@
+<html>
+  <head>
+  <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Do what you gotta do</h1>
+      </header>
+      <section>
+        <nav>
+          <input type='text' name='todo' placeholder='Add an item to your todo'>
+          <a href='#' id='add-todo'>add</a>
+        </nav>
+        <ul></ul>
+      </section>
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script>
+        $('document').ready(function() {
+         
+          if(localStorage.getItem('todos') === null){
+          	localStorage.setItem('todos','')
+          }
+          if(localStorage.getItem('completedtodos') === null){
+          	localStorage.setItem('completedtodos','')
+          }
+          
+          window.todos = localStorage.getItem('todos').split(',');
+          window.completedtodos = localStorage.getItem('completedtodos').split(',');
+          todos.forEach(function(item) {
+            addTodo(item)
+          });
 
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Wunderlist</title>
-</head>
-<body>
-	<header>	
-		<h1> I CAN HAS TO DO </h1>
-	</header>
-	<section>
-		<input type='text' name='todo' placeholder='Add an item to your todo'>
-		<a href='#' id='add-todo'>add</a>
-	<ul></ul>
-	</section>
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script>
-	$('document').ready(function(){
-		window.todos = eval(localStorage.getItem('todos'));
-		todos.forEach(function(item) {
-			addTodo(item)
-		});
-	});
-	var addToDo = function() {
-			var li = ($('<li>').text($('input').val()).append('<a href = "#'> x </a>);
-			console.log(li.children().first)
-			li.children().on('click', function(){
-				li.css('text-decoration', 'line-through')
-			})
-			$('ul').append(li)
-			$('input').val(' ');
-	}
-		
-	var saveTodo = function(item){
-		window.todos.push(item);
-		// localStorage.setItem('todos', ('['+window.todos+']"').toString())
-		localStorage.setItem('todos', ('['+window.todos+']"').toString())
-	}
+        });
 
-
-		$('#add-todo').on('click', function(){
-			var item = $('input')
-			addToDo(item);
-			saveToDo(item)
-		});
-
-		$('#input').on('keyup', function(){
-			// console.log(event);
-			if(event.keyCode === 13) {
-			addToDo(item);
-			saveToDo(item)
-			}
-		});
-
-		$($('a')[1]).on('click', function(){ $(event.target.parentNode)
-			// console.log(event);
-
-
-		});
-
-
-	</script>
-</body>
+        var addTodo = function(item) {
+          if(item !=='') {
+            var li = $('<li>').text(item).append('   <a href="#">x</a>');
+            li.children().on('click', function() {
+              li.addClass("completed");
+              completedTodo(item); 
+              for(var i = todos.length - 1; i >= 0; i--) {
+          			if(todos[i] === item) {
+             				todos.splice(i, 1);
+             				localStorage.setItem('todos', window.todos.toString())
+          			}
+  			     }
+            })
+            $('ul').append(li);
+            $('input').val('');
+          }
+        }
+        var saveTodo = function(item) {
+          	window.todos.push(item);
+          	localStorage.setItem('todos', window.todos.toString()); 
+         }
+        var completedTodo = function(item) {
+         	window.completedtodos.push(item);
+          	localStorage.setItem('completedtodos', window.completedtodos.toString()); 
+         }
+        $('#add-todo').on('click', function() {
+          var item = $('input').val();
+            addTodo(item);
+            saveTodo(item);
+        });
+        $('input').on('keyup', function() {
+          if(event.keyCode === 13) {
+            var item = $('input').val();
+              addTodo(item);
+              saveTodo(item);
+          }
+        });
+      </script>
+  </body>
 </html>
-
-<!-- go in the console, type $('input').val() then on a new line "hello there" -->
-<!-- then still in the console, type $('ul').append($('<li>').text('herro') -->
-<!-- then still in the console, type $('ul').append($('<li>').text($('input').val()) -->
