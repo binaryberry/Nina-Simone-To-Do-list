@@ -15,33 +15,42 @@
       </section>
       <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
       <script>
-
         $('document').ready(function() {
+         
           if(localStorage.getItem('todos') === null){
-          	localStorage.setItem('todos',[])
+          	localStorage.setItem('todos','')
           }
+          
           window.todos = localStorage.getItem('todos').split(',');
           todos.forEach(function(item) {
             addTodo(item)
           });
+
+          if(localStorage.getItem('completedtodos') === null){
+          	localStorage.setItem('completedtodos','')
+          }
         });
         var addTodo = function(item) {
           var li = $('<li>').text(item).append('   <a href="#">x</a>');
           li.children().on('click', function() {
             li.css('text-decoration', 'line-through');
-            localStorage.setItem('todos', window.todos.toString()); 
+            completedTodo(item); 
+            for(var i = todos.length - 1; i >= 0; i--) {
+    			if(todos[i] === item) {
+       				todos.splice(i, 1);
+    			}
+			}
           })
           $('ul').append(li);
           $('input').val('');
         }
         var saveTodo = function(item) {
-          window.todos.push(item);
-          localStorage.setItem('todos', window.todos.toString()); 
+          	window.todos.push(item);
+          	localStorage.setItem('todos', window.todos.toString()); 
          }
-         var completedTodo = function(item) {
-         	// window.todos.push(item);
-          // 	localStorage.setItem('todos', window.todos.toString()); 
-
+        var completedTodo = function(item) {
+         	window.completedtodos.push(item);
+          	localStorage.setItem('completedtodos', window.completedtodos.toString()); 
          }
         $('#add-todo').on('click', function() {
           var item = $('input').val();
