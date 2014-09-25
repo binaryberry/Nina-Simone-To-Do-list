@@ -27,7 +27,9 @@
           window.todos = localStorage.getItem('todos').split(',');
           window.completedtodos = localStorage.getItem('completedtodos').split(',');
           todos.forEach(function(item) {
+            if(item !==''){
             addTodo(item)
+            }
           });
 
         });
@@ -57,14 +59,18 @@
          }
         $('#add-todo').on('click', function() {
           var item = $('input').val();
-          addTodo(item);
-          saveTodo(item);
+          if(item !=='') {
+            addTodo(item);
+            saveTodo(item);
+          }
         });
         $('input').on('keyup', function() {
           if(event.keyCode === 13) {
             var item = $('input').val();
-            addTodo(item);
-            saveTodo(item);
+            if(item !=='') {
+              addTodo(item);
+              saveTodo(item);
+            }
           }
         });
       </script>
