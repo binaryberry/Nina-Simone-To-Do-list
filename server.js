@@ -15,6 +15,6 @@ server.get('/page3', function(request, response){
   response.send('<h1>The Sun is a terrible newspaper</h1>');
 });
 
-http.listen($PORT, function(){
-  console.log('listening on port' + $PORT);
+http.listen(process.env.PORT, function(){
+  console.log('listening on port' + process.env.PORT);
 });
