@@ -9,7 +9,7 @@ A Nina Simone-themed To Do list app, using your browser's local storage to store
 
 ## How was it built?
 
-We were supplied the base Javascript code by our coach, and then had to use jQuery to allow tasks to be crossed off and then removed when the page was refreshed. Since I enjoyed the project and it kept making me thing of that Nina Simone song, I decided to make it a full site by adding a simple Node server, CSS and some music. That is my only non-TDD project!
+We were supplied the base Javascript code by our coach, and then had to use jQuery to allow tasks to be crossed off and then removed when the page was refreshed. Since I enjoyed the project and it kept making me think of that Nina Simone song, I decided to make it a full site by adding a simple Node server, CSS and some music. That is my only non-TDD project!
 
 - CSS
 - Javascript
